@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import "./Styles/WebStyles.css";
 function App() {
   return (
@@ -33,12 +34,28 @@ function App() {
             <button>Explores Demo</button>
           </div>
           <div id="HomeImageContainer">
-            <div className="HomeImage img1">
-              <h2>Library Office Security </h2>
-            </div>
-            <div className="HomeImage img2">
-              <h2>Recollect your past for the future</h2>
-            </div>
+            <figure className="ImgCard">
+              <div className="HomeImage img1">
+                <figcaption>
+                  <h2>Library Office Security </h2>
+                  <p>
+                    <i className="fa-solid fa-shield-halved">
+                      Connect With Our Expert Agent !
+                    </i>
+                  </p>
+                </figcaption>
+              </div>
+            </figure>
+            <figure className="ImgCard">
+              <div className="HomeImage img2">
+                <figcaption>
+                  <h2>Recollect your past for the future</h2>
+                  <p>
+                    <i className="fa-solid fa-check-double">Let's Get To it</i>
+                  </p>
+                </figcaption>
+              </div>
+            </figure>
           </div>
         </section>
       </header>

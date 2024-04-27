@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500);
+
 * {
   margin: 0;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
@@ -7,11 +9,18 @@
 *:after {
   box-sizing: border-box;
 }
-a , nav button{
+a,
+nav button {
   text-decoration: none;
   font-family: Georgia, "Times New Roman", Times, serif;
 }
 
+/*Header Of the Web*/
+header nav,
+header section {
+  padding: 50px;
+  height: fit-content;
+}
 header {
   background: url("../../public/Pics/HomePage\ Books.jpg");
   height: fit-content;
@@ -22,13 +31,8 @@ header {
   flex-direction: column;
   align-items: center;
 }
-header nav,
-header section {
-  padding: 50px;
-  height: fit-content;
-}
 
-/*Nav Bar*/
+/*- - Nav Bar*/
 header nav {
   display: flex;
   justify-content: space-around;
@@ -38,7 +42,7 @@ header nav {
 }
 header ul {
   display: flex;
-  gap: 20px;
+  gap: 50px;
   align-items: center;
 }
 header ul li {
@@ -54,20 +58,38 @@ header a:hover {
   color: darkgoldenrod;
   border-bottom: 1px rgb(107, 170, 119) solid;
 }
-nav img{
+nav img {
   cursor: pointer;
+  transition: all 0.25s;
 }
-nav button{
-padding: 7px 15px;
-border-radius: 20px;
-margin-left: 9px;
-transition: 0.25s all;
-cursor: pointer;
+nav img:hover {
+  width: 130px;
+  -moz-transform: translate(10px, 16px) skew(-1deg, 4deg);
+  -webkit-transform: translate(10px, 16px) skew(-1deg, 4deg);
+  -o-transform: translate(10px, 16px) skew(-1deg, 4deg);
+  -ms-transform: translate(10px, 16px) skew(-1deg, 4deg);
+  transform: translate(10px, 16px) skew(-1deg, 4deg);
 }
-nav button:hover{
+nav button {
+  padding: 7px 15px;
+  border-radius: 20px;
+  margin-left: 9px;
+  transition: 0.25s all;
+  cursor: pointer;
+  border-top: rgba(131, 78, 18, 0) 3px solid;
+  border-left: rgba(131, 78, 18, 0) 3px solid;
+  background-color: transparent;
+  border-right: none;
+  border-bottom: none;
+}
+nav button:hover {
   background-color: rgb(197, 166, 144);
+  border-top: rgb(131, 78, 18) 3px solid;
+  border-left: rgb(131, 78, 18) 3px solid;
+  color: #420dbd;
 }
-/*HomePage*/
+/*- - Home Section*/
+/* . . First Sec*/
 header section {
   width: 80%;
   margin-left: 150px;
@@ -84,9 +106,15 @@ header section {
   padding: 10px;
   transition: 1s all;
   cursor: pointer;
+  border-right: #420dbd 2px solid;
+  border-left: #ae0dbd 2px solid;
+  border-top: transparent 2px solid;
+  border-bottom: transparent 2px solid;
 }
 #FirstHomeinfo button:hover {
   background-color: rgb(79, 201, 75);
+  border-top: rgb(255, 0, 0) 2px solid;
+  border-bottom: rgb(37, 11, 184) 2px solid;
 }
 .focus {
   font-size: 2rem;
@@ -142,23 +170,24 @@ header section {
     transform: translateX(-451px);
   }
 }
+/* . . Secound Sec*/
+
 #HomeImageContainer {
   display: flex;
 }
 .img1 {
   background: url("../../public/Pics/HomePic1.jpg");
+  background-position: 0cap -20cap;
 }
 .img2 {
   background: url("../../public/Pics/HomePic2.jpg");
+  background-position: 2cap;
 }
 .HomeImage {
-  width: 330px;
+  width: 100%;
   height: 330px;
   background-size: cover;
-  background-position: 0cap;
-  margin: 10px;
 }
-
 .img2:after {
   position: absolute;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
@@ -170,6 +199,112 @@ header section {
   background-color: rgb(224, 245, 220);
   border-radius: 80px;
 }
-.HomeImage h2 {
-  margin-top: 90%;
+figure.ImgCard {
+  font-family: "Raleway", Arial, sans-serif;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  margin: 5px;
+  width: 100%;
+  color: #000000;
+  text-align: center;
+}
+figure.ImgCard * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.3s ease;
+}
+figure.ImgCard img {
+  opacity: 1;
+  width: 100%;
+  -webkit-transition: opacity 0.15s;
+  transition: opacity 0.55s;
+}
+figure.ImgCard:after {
+  background: #b96248d2;
+  width: 120%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  content: "";
+  opacity: 1;
+  -webkit-transform: skew(-75deg) scaleX(0);
+  transform: skew(-75deg) scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+figure.ImgCard figcaption {
+  position: absolute;
+  top: 55%;
+
+  left: 0;
+  width: 100%;
+  -webkit-transform: translateY(-55%);
+  transform: translateY(-55%);
+  z-index: 1;
+}
+figure.ImgCard h2,
+figure.ImgCard p {
+  text-align: center;
+  margin: 0;
+  width: 100%;
+  opacity: 0;
+}
+figure.ImgCard h2 {
+  padding: 0 30px;
+  -moz-transform: rotate(335deg) skew(13deg, 0deg);
+  -webkit-transform: rotate(335deg) skew(13deg, 0deg);
+  -o-transform: rotate(335deg) skew(13deg, 0deg);
+  -ms-transform: rotate(335deg) skew(13deg, 0deg);
+  transform: rotate(335deg) skew(13deg, 0deg);
+  display: inline-block;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+figure.ImgCard p {
+  padding: 0 50px;
+  font-size: 0.8em;
+  font-weight: 500;
+  letter-spacing: 0.2rem;
+  border-radius: 40px;
+  width: fit-content;
+  cursor: pointer;
+}
+figure.ImgCard p:hover {
+  color: #d9d9d9;
+  text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.1),
+    1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+figure.ImgCard a {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 1;
+}
+figure.ImgCard:hover:after,
+figure.ImgCard.hover:after {
+  -webkit-transform: skew(-45deg) scaleX(1);
+  transform: skew(-75deg) scaleX(1);
+  transition: all 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+figure.ImgCard:hover figcaption h2,
+figure.ImgCard.hover figcaption h2,
+figure.ImgCard:hover figcaption p,
+figure.ImgCard.hover figcaption p {
+  -webkit-transform: translate3d(0%, 0%, 0);
+  transform: translate3d(0%, 0%, 0);
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+figure.ImgCard:hover figcaption h2,
+figure.ImgCard.hover figcaption h2 {
+  opacity: 1;
+}
+figure.ImgCard:hover figcaption p,
+figure.ImgCard.hover figcaption p {
+  opacity: 0.7;
 }
