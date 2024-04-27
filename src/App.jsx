@@ -6,31 +6,39 @@ function App() {
         <nav>
           <img src="../NavLogo.png" width="100px" />
           <ul>
-            <li>Demos</li>
-            <li>Documentation</li>
-            <li>Support</li>
+            <li>
+              <a href="#">Demos</a>
+            </li>
+            <li>
+              <a href="#">Documentation</a>
+            </li>
+            <li>
+              <a href="#">Support</a>
+            </li>
             <button>Purchase Now</button>
           </ul>
         </nav>
         <section id="HomeHeader">
           <div id="FirstHomeinfo">
             <h1>
-              Mim | BookStore - Gloabl Library Book Which You Can{" "}
+              Mim | BookStore - Global Library Book Which You Can{" "}
               <span className="focus">
                 <div className="focus--mask">
-                  <div className="focus--mask-inner">Buy ,Preview , Borrow !</div>
+                  <div className="focus--mask-inner">
+                    Buy ,Preview , Borrow !
+                  </div>
                 </div>
               </span>
             </h1>
             <button>Explores Demo</button>
           </div>
-          <div className="HomeImage img1">
-            <img />
-            <h2>Library Office Security Adminstration</h2>
-          </div>
-          <div className="HomeImage img2">
-            <img />
-            <h2>Recollect your past for the future</h2>
+          <div id="HomeImageContainer">
+            <div className="HomeImage img1">
+              <h2>Library Office Security </h2>
+            </div>
+            <div className="HomeImage img2">
+              <h2>Recollect your past for the future</h2>
+            </div>
           </div>
         </section>
       </header>

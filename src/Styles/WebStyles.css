@@ -7,9 +7,14 @@
 *:after {
   box-sizing: border-box;
 }
+a , nav button{
+  text-decoration: none;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
 header {
   background: url("../../public/Pics/HomePage\ Books.jpg");
-  height: 100vh;
+  height: fit-content;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 0cap -15cap;
@@ -22,18 +27,46 @@ header section {
   padding: 50px;
   height: fit-content;
 }
+
 /*Nav Bar*/
 header nav {
   display: flex;
   justify-content: space-around;
   width: 100%;
   align-items: center;
+  background-color: transparent;
 }
 header ul {
   display: flex;
   gap: 20px;
+  align-items: center;
 }
-
+header ul li {
+  list-style-type: none;
+}
+header a {
+  color: rgb(46, 39, 39);
+  font-weight: 500;
+  transition: 0.25s all;
+  border-bottom: 1px rgba(128, 128, 128, 0) solid;
+}
+header a:hover {
+  color: darkgoldenrod;
+  border-bottom: 1px rgb(107, 170, 119) solid;
+}
+nav img{
+  cursor: pointer;
+}
+nav button{
+padding: 7px 15px;
+border-radius: 20px;
+margin-left: 9px;
+transition: 0.25s all;
+cursor: pointer;
+}
+nav button:hover{
+  background-color: rgb(197, 166, 144);
+}
 /*HomePage*/
 header section {
   width: 80%;
@@ -44,8 +77,16 @@ header section {
   width: 60%;
   font-size: 30px;
 }
-#FirstHomeinfo button{
-    margin: 60px;
+#FirstHomeinfo button {
+  background-color: rgb(75, 201, 138);
+  margin: 60px;
+  border-radius: 20px;
+  padding: 10px;
+  transition: 1s all;
+  cursor: pointer;
+}
+#FirstHomeinfo button:hover {
+  background-color: rgb(79, 201, 75);
 }
 .focus {
   font-size: 2rem;
@@ -100,4 +141,35 @@ header section {
   100% {
     transform: translateX(-451px);
   }
+}
+#HomeImageContainer {
+  display: flex;
+}
+.img1 {
+  background: url("../../public/Pics/HomePic1.jpg");
+}
+.img2 {
+  background: url("../../public/Pics/HomePic2.jpg");
+}
+.HomeImage {
+  width: 330px;
+  height: 330px;
+  background-size: cover;
+  background-position: 0cap;
+  margin: 10px;
+}
+
+.img2:after {
+  position: absolute;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  content: " ";
+  background: url(../../public/Pics/vipHomepage.png) center;
+  background-size: cover;
+  padding: 32px;
+  margin-top: -255px;
+  background-color: rgb(224, 245, 220);
+  border-radius: 80px;
+}
+.HomeImage h2 {
+  margin-top: 90%;
 }
