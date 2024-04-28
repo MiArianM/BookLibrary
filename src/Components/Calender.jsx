@@ -25,7 +25,7 @@ function Calender() {
               inactive.{" "}
             </span>
           </p>
-          <button onClick={Toggle}>Show</button>
+          <button onClick={Toggle}>Hide</button>
         </div>
         <hr />
       </section>
@@ -33,7 +33,7 @@ function Calender() {
   } else {
     return (
       <section id="Calender">
-        <button onClick={Toggle}>Hide</button>
+        <button onClick={Toggle}>Show</button>
       </section>
     );
   }
