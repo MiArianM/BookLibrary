@@ -2,7 +2,7 @@ const books = [
   {
     isbn: "9781593279509",
     img: "./public/Pics/Books/First.jpg",
-    title: "Eloquent JavaScript, Third Edition",
+    title: "Eloquent JavaScript",
     subtitle: "A Modern Introduction to Programming",
     author: "Marijn Haverbeke",
     published: "2018-12-04",

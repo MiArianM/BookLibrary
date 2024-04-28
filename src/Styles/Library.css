@@ -14,8 +14,41 @@
     margin-top: 20px;
     padding: 5px 10px;
   }
+  #libraryAndList {
+    width: 80%;
+    display: flex;
+    margin: 50px;
+  }
+  #Fav-List {
+    background-color: #85ffbd;
+    background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+    height: fit-content;
+    padding: 20px;
+    width: 40%;
+    margin-top: 10em;
+    border-radius: 20px;
+  }
+  #Fav-List * {
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+  }
+  #Fav-List ol li {
+    display: flex;
+    align-items: center;
+    margin: 20px 0px;
+  }
+  #Fav-List h2 {
+    font-size: 16px;
+    margin-left: 18px;
+  }
+  #Fav-List img {
+    height: 80px;
+    width: 80px;
+
+    border-radius: 50%;
+  }
   ul {
-    width: 100%;
+    width: fit-content;
     display: grid;
     grid-template-columns: 1fr;
     background-color: rgba(194, 217, 238, 0.664);
@@ -121,9 +154,9 @@
     height: fit-content;
     transition: all 0.45s;
   }
-  .cta-section i:hover{
+  .cta-section i:hover {
     font-size: 42px;
-    transform: translate(0px,-10px)
+    transform: translate(0px, -10px);
   }
   .cta-section .btn {
     padding: 20px;
@@ -132,8 +165,5 @@
     color: #696969;
     background-color: rgb(253, 253, 253);
     border-radius: 30px;
-  }
-  .Active{
-    color: red;
   }
 }
