@@ -1,6 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,500);
 
-
 /*Header Of the Web*/
 header nav,
 header section {
@@ -118,7 +117,7 @@ header section {
 .focus:after {
   content: "";
   position: absolute;
-  width:17px;
+  width: 17px;
   height: calc(100% + 4px);
   top: -1px;
   left: 0;
@@ -174,17 +173,6 @@ header section {
   height: 330px;
   background-size: cover;
 }
-.img2:after {
-  position: absolute;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  content: " ";
-  background: url(../../public/Pics/vipHomepage.png) center;
-  background-size: cover;
-  padding: 32px;
-  margin-top: -255px;
-  background-color: rgb(224, 245, 220);
-  border-radius: 80px;
-}
 figure.ImgCard {
   font-family: "Raleway", Arial, sans-serif;
   color: #fff;
@@ -224,7 +212,6 @@ figure.ImgCard:after {
 figure.ImgCard figcaption {
   position: absolute;
   top: 55%;
-
   left: 0;
   width: 100%;
   -webkit-transform: translateY(-55%);
@@ -263,14 +250,7 @@ figure.ImgCard p:hover {
   text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.1),
     1px 1px 1px rgba(0, 0, 0, 0.5);
 }
-figure.ImgCard a {
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  position: absolute;
-  z-index: 1;
-}
+
 figure.ImgCard:hover:after,
 figure.ImgCard.hover:after {
   -webkit-transform: skew(-45deg) scaleX(1);
