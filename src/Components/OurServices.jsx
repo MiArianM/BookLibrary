@@ -1,4 +1,4 @@
-import "../Styles/Main.css";
+import "../Styles/OurServices.css";
 /* eslint-disable react/no-unescaped-entities */
 function OurServices() {
   return (

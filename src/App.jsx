@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+import Calender from "./Components/Calender";
 import Header from "./Components/Header";
 import OurServices from "./Components/OurServices";
 import "./Styles/Global.css";
@@ -8,21 +9,7 @@ function App() {
       <Header />
       <main>
         <OurServices />
-        <section id="infos1">
-          <div>
-            <h3>Events Calendar</h3>
-            <span>-</span>
-            <p>
-              A solid, feature-rich calendar and events management suite that’s
-              scalable from soup to nuts. Create and showcase events on your
-              website with ease.
-            </p>
-            <a>Discover</a>
-          </div>
-          <div>
-            <img />
-          </div>
-        </section>
+        <Calender />
         <section id="infos2">
           <div></div>
           <div>
