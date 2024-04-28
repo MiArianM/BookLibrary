@@ -88,7 +88,11 @@ function Library() {
                       <i
                         data-id={Book.isbn}
                         onClick={FavHandler}
-                        className="fa-regular fa-heart"
+                        className={
+                          favlist.includes(Book)
+                            ? "fa-solid fa-heart"
+                            : "fa-regular fa-heart"
+                        }
                       ></i>
                     </div>
                   </div>
