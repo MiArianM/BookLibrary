@@ -1,0 +1,61 @@
+@media screen and (min-width: 1150px) {
+  :root {
+    --biggest-font-size: 4.5rem;
+    --h1-font-size: 3rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: 0.875rem;
+    --smaller-font-size: 0.813rem;
+  }
+}
+@media screen and (max-width: 340px) {
+  .container {
+    margin-inline: 1rem;
+  }
+}
+
+/* For medium devices */
+@media screen and (min-width: 576px) {
+  .projects__container {
+    grid-template-columns: 350px;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .projects__container {
+    grid-template-columns: repeat(2, 350px);
+  }
+}
+
+/* For large devices */
+@media screen and (min-width: 1150px) {
+  .container {
+    margin-inline: auto;
+  }
+  .section {
+    padding-block: 7rem 2rem;
+  }
+  .section__title-1::after,
+  .section__title-2::after {
+    width: 70px;
+    height: 48px;
+  }
+  .projects__container {
+    grid-template-columns: repeat(3, 352px);
+    padding-block: 3rem 1rem;
+  }
+  .projects__card {
+    padding: 1.25rem 1.25rem 2.5rem;
+  }
+  .projects__image {
+    margin-bottom: 1rem;
+  }
+  .projects__content {
+    margin-bottom: 2rem;
+  }
+  .projects__buttons {
+    right: 1.25rem;
+  }
+}

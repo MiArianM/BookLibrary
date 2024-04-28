@@ -1,12 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
 import Header from "./Components/Header";
+import OurServices from "./Components/OurServices";
 import "./Styles/Global.css";
 function App() {
   return (
     <>
       <Header />
       <main>
-        <section id="OurExperts"></section>
+        <OurServices />
         <section id="infos1">
           <div>
             <h3>Events Calendar</h3>
