@@ -118,6 +118,12 @@
     font-size: 40px;
     cursor: pointer;
     color: #df50af;
+    height: fit-content;
+    transition: all 0.45s;
+  }
+  .cta-section i:hover{
+    font-size: 42px;
+    transform: translate(0px,-10px)
   }
   .cta-section .btn {
     padding: 20px;
@@ -126,5 +132,8 @@
     color: #696969;
     background-color: rgb(253, 253, 253);
     border-radius: 30px;
+  }
+  .Active{
+    color: red;
   }
 }

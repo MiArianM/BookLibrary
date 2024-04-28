@@ -1,20 +1,47 @@
 /* eslint-disable react/no-unescaped-entities */
 import "../Styles/Library.css";
 import books from "../Books";
+import { useState } from "react";
 function Library() {
+  const [searchvalue, setSearchValue] = useState("");
+  const [finalBooks, setFinalBooks] = useState([...books]);
+  const searchHandler = (event) => {
+    setSearchValue(event.target.value);
+  };
+  const ClickHandler = () => {
+    setFinalBooks(
+      books.filter((book) =>
+        book.title.toLowerCase().includes(searchvalue.toLowerCase())
+      )
+    );
+  };
+  const FavHandler = (event) => {
+    if (event.target.classList == "fa-regular fa-heart") {
+      event.target.classList = "fa-solid fa-heart";
+    } else {
+      event.target.classList = "fa-regular fa-heart";
+    }
+  };
   return (
     <section id="Library">
       <h2>Mim | Library Book</h2>
       <div id="SearchContainer">
         <label>
-          <input type="text" required placeholder="Book Name " />
-          <button type="submit">
+          <input
+            onChange={searchHandler}
+            value={searchvalue}
+            type="text"
+            required
+            placeholder="Book Name "
+          />
+          <button onClick={ClickHandler}>
             <i className="fa-solid fa-magnifying-glass"></i>
           </button>
         </label>
+          <p style={{fontFamily:"serief",letterSpacing:"2px"}}>-Relax ! LowerCase/UpperCase Is not Important Here xD</p>
       </div>
       <ul>
-        {books.map((Book) => (
+        {finalBooks.map((Book) => (
           <li key={Book.isbn}>
             {" "}
             <div className="containero">
@@ -46,7 +73,7 @@ function Library() {
                     <a href="#" className="btn btn-light">
                       Purchase
                     </a>
-                    <i className="fa-regular fa-heart"></i>
+                    <i onClick={FavHandler} className="fa-regular fa-heart"></i>
                   </div>
                 </div>
               </div>
