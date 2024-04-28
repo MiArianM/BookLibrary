@@ -71,7 +71,9 @@
   background-color: var(--container-color);
   transition: background-color 0.7s;
 }
-
+#CarouselServices{
+  display: flex;
+}
 .projects__card {
   padding: 1rem 1rem 2rem;
   border-radius: 0.75rem;
@@ -81,10 +83,9 @@
 .projects__image {
   position: relative;
   margin-bottom: 0.75rem;
-
 }
 .projects__image img {
-  width:300px;
+  width: 300px;
 }
 .projects__img {
   border-radius: 0.75rem;

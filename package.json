@@ -12,6 +12,7 @@
   "dependencies": {
     "install": "^0.13.0",
     "npm": "^10.6.0",
+    "primereact": "^10.6.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
