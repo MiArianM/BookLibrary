@@ -2,13 +2,37 @@
 import "../Styles/Library.css";
 import books from "../Books";
 import { useState } from "react";
+import { v4 } from "uuid";
 function Library() {
   const [searchvalue, setSearchValue] = useState("");
   const [finalBooks, setFinalBooks] = useState([...books]);
   const [favlist, setFavList] = useState([]);
+  const [addlist, setAddList] = useState([]);
+  const [finalprice, setFinalPrice] = useState(0);
+  const [productnumber, setProductNumber] = useState(1);
   const searchHandler = (event) => {
     setSearchValue(event.target.value);
   };
+
+  const CartAddingHandler = (event) => {
+    console.dir(event.target.parentElement.dataset.price.split(" ").shift());
+    setProductNumber(productnumber + 1);
+    setFinalPrice(
+      (finalprice) =>
+        finalprice +
+        +event.target.parentElement.dataset.price.split(" ").shift()
+    );
+  };
+  const CartRemovingHandler = (event) => {
+    console.log(event.target);
+    setProductNumber(productnumber - 1);
+    setFinalPrice(
+      (finalprice) =>
+        finalprice -
+        +event.target.parentElement.dataset.price.split(" ").shift()
+    );
+  };
+
   const ClickHandler = () => {
     setFinalBooks(
       books.filter((book) =>
@@ -16,20 +40,37 @@ function Library() {
       )
     );
   };
+  const AddCart = (event) => {
+    setAddList((addlist) => [
+      ...addlist,
+      books.find(
+        (book) => +book.isbn === +event.target.parentElement.dataset.id
+      ),
+    ]);
+    console.log(event.target.parentElement);
+    setFinalPrice(
+      (finalprice) =>
+        finalprice +
+        +event.target.parentElement.dataset.price.split(" ").shift()
+    );
+  };
   const FavHandler = (event) => {
     if (event.target.classList == "fa-regular fa-heart") {
       event.target.classList = "fa-solid fa-heart";
       setFavList((favlist) => [
         ...favlist,
-        books.find((book) => +book.isbn === +event.target.dataset.id),
+        books.find(
+          (book) => +book.isbn === +event.target.parentElement.dataset.id
+        ),
       ]);
     } else {
       event.target.classList = "fa-regular fa-heart";
       setFavList((favlist) => [
-        ...favlist.filter((book) => +book.isbn !== +event.target.dataset.id),
+        ...favlist.filter(
+          (book) => +book.isbn !== +event.target.parentElement.dataset.id
+        ),
       ]);
     }
-    console.log(favlist);
   };
   return (
     <section id="Library">
@@ -75,18 +116,25 @@ function Library() {
                       </address>
                     </div>
                     <strong id="Price">Price : {Book.price}</strong>
-                    <div className="cta-section">
-                      <a href="#" className="btn btn-light">
+                    <div
+                      data-id={Book.isbn}
+                      className="cta-section"
+                      data-price={Book.price}
+                    >
+                      <a href="#Cart-Section" className="btn btn-light">
                         Preview
                       </a>
-                      <a href="#" className="btn btn-light">
+                      <a href="#Cart-Section" className="btn btn-light">
                         Borrow
                       </a>
-                      <a href="#" className="btn btn-light">
+                      <a
+                        onClick={AddCart}
+                        href="#Cart-Section"
+                        className="btn btn-light"
+                      >
                         Purchase
                       </a>
                       <i
-                        data-id={Book.isbn}
                         onClick={FavHandler}
                         className={
                           favlist.includes(Book)
@@ -101,16 +149,39 @@ function Library() {
             </li>
           ))}
         </ul>
-        <div id="Fav-List">
-          <h3>Your Favorite Books</h3>
-          <ol>
-            {favlist.map((favbook) => (
-              <li key={favbook.isbn}>
-                <img src={favbook.img} />
-                <h2>{favbook.title}</h2>
-              </li>
-            ))}
-          </ol>
+        <div id="cart-favSection">
+          <div id="Cart-Section">
+            <h3>Your Add Cart</h3>
+            <ol>
+              {addlist.map((product) => (
+                <li id="cart" key={v4()}>
+                  <div>
+                    {" "}
+                    <img src={product.img} />
+                  </div>
+                  <div data-price={product.price}>
+                    <h2>{product.title}</h2>
+                    <h4>{product.price}</h4>
+                    <button onClick={CartRemovingHandler}>-</button>
+                    <span>{productnumber}</span>
+                    <button onClick={CartAddingHandler}>+</button>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <strong>Total Price : {finalprice} $</strong>
+          </div>
+          <div id="Fav-List">
+            <h3>Your Favorite Books</h3>
+            <ol>
+              {favlist.map((favbook) => (
+                <li key={favbook.isbn}>
+                  <img src={favbook.img} />
+                  <h2>{favbook.title}</h2>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
       </div>
     </section>

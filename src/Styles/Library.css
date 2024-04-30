@@ -24,8 +24,9 @@
     background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
     height: fit-content;
     padding: 20px;
-    width: 40%;
+    width: 100%;
     margin-top: 10em;
+    margin-left: 2em;
     border-radius: 20px;
   }
   #Fav-List * {
@@ -165,5 +166,25 @@
     color: #696969;
     background-color: rgb(253, 253, 253);
     border-radius: 30px;
+  }
+}
+#Cart-Section {
+  height: fit-content;
+  background-color: #b97357;
+  width: 80%;
+}
+#cart-favSection {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#cart{
+  display: flex;
+  img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
   }
 }
