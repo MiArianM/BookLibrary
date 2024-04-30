@@ -13,24 +13,63 @@ function Library() {
   const searchHandler = (event) => {
     setSearchValue(event.target.value);
   };
-
-  const CartAddingHandler = (event) => {
-    console.dir(event.target.parentElement.dataset.price.split(" ").shift());
-    setProductNumber(productnumber + 1);
-    setFinalPrice(
-      (finalprice) =>
-        finalprice +
-        +event.target.parentElement.dataset.price.split(" ").shift()
-    );
-  };
-  const CartRemovingHandler = (event) => {
-    console.log(event.target);
-    setProductNumber(productnumber - 1);
-    setFinalPrice(
-      (finalprice) =>
-        finalprice -
-        +event.target.parentElement.dataset.price.split(" ").shift()
-    );
+  const PressingButton = (event) => {
+    switch (event.target.innerText) {
+      case "Purchase":
+        setAddList((addlist) => [
+          ...addlist,
+          books.find(
+            (book) => +book.isbn === +event.target.parentElement.dataset.id
+          ),
+        ]);
+        console.log(event.target.parentElement);
+        setFinalPrice(
+          (finalprice) =>
+            finalprice +
+            +event.target.parentElement.dataset.price.split(" ").shift()
+        );
+        break;
+      case "+":
+        console.dir(
+          event.target.parentElement.dataset.price.split(" ").shift()
+        );
+        setProductNumber(productnumber + 1);
+        setFinalPrice(
+          (finalprice) =>
+            finalprice +
+            +event.target.parentElement.dataset.price.split(" ").shift()
+        );
+        break;
+      case "-":
+        console.log(event.target);
+        setProductNumber(productnumber - 1);
+        setFinalPrice(
+          (finalprice) =>
+            finalprice -
+            +event.target.parentElement.dataset.price.split(" ").shift()
+        );
+        break;
+      case "":
+        if (event.target.classList == "fa-regular fa-heart") {
+          event.target.classList = "fa-solid fa-heart";
+          setFavList((favlist) => [
+            ...favlist,
+            books.find(
+              (book) => +book.isbn === +event.target.parentElement.dataset.id
+            ),
+          ]);
+        } else {
+          event.target.classList = "fa-regular fa-heart";
+          setFavList((favlist) => [
+            ...favlist.filter(
+              (book) => +book.isbn !== +event.target.parentElement.dataset.id
+            ),
+          ]);
+        }
+        break;
+      default:
+        break;
+    }
   };
 
   const ClickHandler = () => {
@@ -40,38 +79,7 @@ function Library() {
       )
     );
   };
-  const AddCart = (event) => {
-    setAddList((addlist) => [
-      ...addlist,
-      books.find(
-        (book) => +book.isbn === +event.target.parentElement.dataset.id
-      ),
-    ]);
-    console.log(event.target.parentElement);
-    setFinalPrice(
-      (finalprice) =>
-        finalprice +
-        +event.target.parentElement.dataset.price.split(" ").shift()
-    );
-  };
-  const FavHandler = (event) => {
-    if (event.target.classList == "fa-regular fa-heart") {
-      event.target.classList = "fa-solid fa-heart";
-      setFavList((favlist) => [
-        ...favlist,
-        books.find(
-          (book) => +book.isbn === +event.target.parentElement.dataset.id
-        ),
-      ]);
-    } else {
-      event.target.classList = "fa-regular fa-heart";
-      setFavList((favlist) => [
-        ...favlist.filter(
-          (book) => +book.isbn !== +event.target.parentElement.dataset.id
-        ),
-      ]);
-    }
-  };
+
   return (
     <section id="Library">
       <h2>Mim | Library Book</h2>
@@ -128,14 +136,14 @@ function Library() {
                         Borrow
                       </a>
                       <a
-                        onClick={AddCart}
+                        onClick={PressingButton}
                         href="#Cart-Section"
                         className="btn btn-light"
                       >
                         Purchase
                       </a>
                       <i
-                        onClick={FavHandler}
+                        onClick={PressingButton}
                         className={
                           favlist.includes(Book)
                             ? "fa-solid fa-heart"
@@ -162,9 +170,9 @@ function Library() {
                   <div data-price={product.price}>
                     <h2>{product.title}</h2>
                     <h4>{product.price}</h4>
-                    <button onClick={CartRemovingHandler}>-</button>
+                    <button onClick={PressingButton}>-</button>
                     <span>{productnumber}</span>
-                    <button onClick={CartAddingHandler}>+</button>
+                    <button onClick={PressingButton}>+</button>
                   </div>
                 </li>
               ))}
@@ -184,6 +192,15 @@ function Library() {
           </div>
         </div>
       </div>
+      <strong>
+        This Library is not Completed Yet ! Cause Of Missing knowledges Of
+        React.js <br />
+        I've Created The Add-Cart Logic but , The Quantity section of each item
+        has still bug adn couldn't debugg it unfortunately !
+        <br />
+        Or The Preview Section is not completed not Yet so , This Library will
+        Update as soon as I learn More xD
+      </strong>
     </section>
   );
 }

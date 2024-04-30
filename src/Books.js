@@ -6,7 +6,7 @@ const books = [
     subtitle: "A Modern Introduction to Programming",
     author: "Marijn Haverbeke",
     published: "2018-12-04",
-    price:"129 $",
+    price: "129 $",
     publisher: "No Starch Press",
     pages: 472,
     description:
@@ -20,7 +20,7 @@ const books = [
     subtitle: "Dive into ES6 and the Future of JavaScript",
     author: "Nicolás Bevacqua",
     published: "2017-07-16",
-    price:"211 $",
+    price: "211 $",
     publisher: "O'Reilly Media",
     pages: 334,
     description:
@@ -34,7 +34,7 @@ const books = [
     subtitle: "The Definitive Guide for JavaScript Developers",
     author: "Nicholas C. Zakas",
     published: "2016-09-03",
-    price:"67 $",
+    price: "67 $",
     publisher: "No Starch Press",
     pages: 352,
     description:
@@ -48,7 +48,7 @@ const books = [
     subtitle: "An In-Depth Guide for Programmers",
     author: "Axel Rauschmayer",
     published: "2014-04-08",
-    price:"22 $",
+    price: "22 $",
     publisher: "O'Reilly Media",
     pages: 460,
     description:
@@ -62,7 +62,7 @@ const books = [
     subtitle: "A JavaScript and jQuery Developer's Guide",
     author: "Addy Osmani",
     published: "2012-08-30",
-    price:"94 $",
+    price: "94 $",
     publisher: "O'Reilly Media",
     pages: 254,
     description:
@@ -77,7 +77,7 @@ const books = [
     subtitle: "Get Started",
     author: "Kyle Simpson",
     published: "2020-01-28",
-    price:"157 $",
+    price: "157 $",
     publisher: "Independently published",
     pages: 143,
     description:
@@ -92,7 +92,7 @@ const books = [
     subtitle: "Everything you neeed to know about Git",
     author: "Scott Chacon and Ben Straub",
     published: "2014-11-18",
-    price:"105 $",
+    price: "105 $",
     publisher: "Apress; 2nd edition",
     pages: 458,
     description:
@@ -106,7 +106,7 @@ const books = [
     subtitle: "Hmmm I Don't Know xD It's Just Good .",
     author: "Caitlin Sadowski, Thomas Zimmermann",
     published: "2019-05-11",
-    price:"31 $",
+    price: "31 $",
     publisher: "Apress",
     pages: 310,
     description:
