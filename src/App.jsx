@@ -4,6 +4,7 @@ import Header from "./Components/Header";
 import Library from "./Components/Library";
 import OurServices from "./Components/OurServices";
 import "./Styles/Global.css";
+import "./Styles/FadeAnimations.css";
 function App() {
   return (
     <>

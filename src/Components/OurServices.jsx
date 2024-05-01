@@ -4,7 +4,7 @@ import services from "../Services";
 
 function OurServices() {
   return (
-    <section id="OurServices">
+    <section className="wow animate__animated animate__slideInUp" id="OurServices">
       {" "}
       <div id="CarouselServices">
         {services.map((service, index) => (

@@ -123,8 +123,13 @@ function Library() {
 
   return (
     <section id="Library">
-      <h2>Mim | Library Book</h2>
-      <div id="SearchContainer">
+      <h2 className="wow animate__animated animate__zoomIn">
+        Mim | Library Book
+      </h2>
+      <div
+        className="wow animate__animated animate__zoomInLeft"
+        id="SearchContainer"
+      >
         <label>
           <input
             onChange={searchHandler}
@@ -144,7 +149,10 @@ function Library() {
       <div id="libraryAndList">
         <ul>
           {finalBooks.map((Book) => (
-            <li key={Book.isbn}>
+            <li
+              className="wow animate__animated animate__lightSpeedInLeft"
+              key={Book.isbn}
+            >
               {" "}
               <div className="containero">
                 <div className="card dark">
@@ -198,7 +206,10 @@ function Library() {
             </li>
           ))}
         </ul>
-        <div id="cart-favSection">
+        <div
+          className="wow animate__animated animate__fadeInUp"
+          id="cart-favSection"
+        >
           <div id="Cart-Section">
             <h3>Your Add Cart</h3>
             <ol>
@@ -217,7 +228,9 @@ function Library() {
                     <button data-action="-" onClick={PressingButton}>
                       -
                     </button>
-                    <span>{product.Quantity}</span>
+                    <span className="animate__animated animate__rotateInDownRight ">
+                      {product.Quantity}
+                    </span>
                     <button data-action="+" onClick={PressingButton}>
                       +
                     </button>
@@ -244,14 +257,11 @@ function Library() {
           </div>
         </div>
       </div>
-      <strong>
+      <strong className="wow animate__animated animate__rotateInDownLeft">
         This Library is not Completed Yet ! Cause Of Missing knowledges Of
         React.js <br />
-        I've Created The Add-Cart Logic but , The Quantity section of each item
-        has still bug adn couldn't debugg it unfortunately !
-        <br />
-        Or The Preview Section is not completed not Yet so , This Library will
-        Update as soon as I learn More xD
+        The Preview and Borrow Sections are not completed Yet ! so , This
+        Library will Update as soon as I learn More xD
       </strong>
     </section>
   );

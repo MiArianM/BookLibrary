@@ -4,7 +4,7 @@ function Header() {
   return (
     <>
       <header>
-        <nav>
+        <nav className="animate__animated animate__backInDown">
           <img src="../NavLogo.png" width="100px" />
           <ul>
             <li>
@@ -20,22 +20,26 @@ function Header() {
           </ul>
         </nav>
         <section id="HomeHeader">
-          <div id="FirstHomeinfo">
+          <div
+            className="animate__animated animate__flipInX "
+            id="FirstHomeinfo"
+          >
             <h1>
               Mim | BookStore - Global Library Book is The Place where You Can{" "}
               <span className="focus">
                 <div className="focus--mask">
-                  <div className="focus--mask-inner">
-                    Buy ,Preview , Borrow
-                  </div>
+                  <div className="focus--mask-inner">Buy ,Preview , Borrow</div>
                 </div>
               </span>
               The Books !
             </h1>
             <button>Explores Demo</button>
           </div>
-          <div id="HomeImageContainer">
-            <figure className="ImgCard">
+          <div
+            className="animate__animated animate__flipInX "
+            id="HomeImageContainer"
+          >
+            <figure className="animate__animated animate__fadeInLeft ImgCard">
               <div className="HomeImage img1">
                 <figcaption>
                   <h2>Library Office Security </h2>
@@ -47,7 +51,7 @@ function Header() {
                 </figcaption>
               </div>
             </figure>
-            <figure className="ImgCard">
+            <figure className="animate__animated animate__fadeInRight ImgCard">
               <div className="HomeImage img2">
                 <figcaption>
                   <h2>Recollect your past for the future</h2>
