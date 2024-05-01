@@ -30,10 +30,14 @@ function Library() {
             { Book: newBook, Quantity: 1 },
           ]);
         }
-        setFinalPrice(
-          (finalprice) =>
-            finalprice +
-            +event.target.parentElement.dataset.price.split(" ").shift()
+        setFinalPrice((prevPrice) =>
+          Math.max(
+            prevPrice +
+              parseFloat(
+                event.target.parentElement.dataset.price.split(" ").shift()
+              ),
+            0
+          )
         );
         break;
       case "+":
@@ -43,10 +47,14 @@ function Library() {
           return updatedAddList;
         });
 
-        setFinalPrice(
-          (finalprice) =>
-            finalprice +
-            +event.target.parentElement.dataset.price.split(" ").shift()
+        setFinalPrice((prevPrice) =>
+          Math.max(
+            prevPrice +
+              parseFloat(
+                event.target.parentElement.dataset.price.split(" ").shift()
+              ),
+            0
+          )
         );
         break;
       case "-":
@@ -55,10 +63,14 @@ function Library() {
           updatedAddList[BookIndex].Quantity -= 1;
           return updatedAddList;
         });
-        setFinalPrice(
-          (finalprice) =>
-            finalprice -
-            +event.target.parentElement.dataset.price.split(" ").shift()
+        setFinalPrice((prevPrice) =>
+          Math.max(
+            prevPrice -
+              parseFloat(
+                event.target.parentElement.dataset.price.split(" ").shift()
+              ),
+            0
+          )
         );
         break;
       case "":
@@ -83,6 +95,9 @@ function Library() {
         console.log("HH");
         break;
     }
+    setAddList((prevAddList) =>
+      prevAddList.filter((item) => item.Quantity >= 0)
+    );
   };
 
   const ClickHandler = () => {
