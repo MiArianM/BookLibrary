@@ -99,6 +99,19 @@ function Library() {
       prevAddList.filter((item) => item.Quantity >= 1)
     );
   };
+  const DeleteItem = (event) => {
+    const product = addlist.find(
+      (item) => item.Book.isbn === event.target.parentElement.dataset.id
+    );
+    const FullProductPrice =
+      product.Book.price.split(" ").shift() * product.Quantity;
+    setAddList((prevAddList) =>
+      prevAddList.filter(
+        (item) => item.Book.isbn !== event.target.parentElement.dataset.id
+      )
+    );
+    setFinalPrice((prevPrice) => prevPrice - FullProductPrice);
+  };
 
   const ClickHandler = () => {
     setFinalBooks(
@@ -201,9 +214,17 @@ function Library() {
                   >
                     <h2>{product.Book.title}</h2>
                     <h4>{product.Book.price}</h4>
-                    <button onClick={PressingButton}>-</button>
+                    <button data-action="-" onClick={PressingButton}>
+                      -
+                    </button>
                     <span>{product.Quantity}</span>
-                    <button onClick={PressingButton}>+</button>
+                    <button data-action="+" onClick={PressingButton}>
+                      +
+                    </button>
+                    <i
+                      onClick={DeleteItem}
+                      className="fa-solid fa-trash-can"
+                    ></i>
                   </div>
                 </li>
               ))}
