@@ -9,20 +9,27 @@ function Library() {
   const [favlist, setFavList] = useState([]);
   const [addlist, setAddList] = useState([]);
   const [finalprice, setFinalPrice] = useState(0);
-  const [productnumber, setProductNumber] = useState(1);
   const searchHandler = (event) => {
     setSearchValue(event.target.value);
   };
   const PressingButton = (event) => {
+    const BookId = event.target.parentElement.dataset.id;
+    const BookIndex = addlist.findIndex((item) => +item.Book.isbn === +BookId);
     switch (event.target.innerText) {
       case "Purchase":
-        setAddList((addlist) => [
-          ...addlist,
-          books.find(
-            (book) => +book.isbn === +event.target.parentElement.dataset.id
-          ),
-        ]);
-        console.log(event.target.parentElement);
+        if (BookIndex !== -1) {
+          setAddList((prevlist) => {
+            const UpdatedList = [...prevlist];
+            UpdatedList[BookIndex].Quantity += 1;
+            return UpdatedList;
+          });
+        } else {
+          const newBook = books.find((book) => +book.isbn === +BookId);
+          setAddList((prevlist) => [
+            ...prevlist,
+            { Book: newBook, Quantity: 1 },
+          ]);
+        }
         setFinalPrice(
           (finalprice) =>
             finalprice +
@@ -30,10 +37,12 @@ function Library() {
         );
         break;
       case "+":
-        console.dir(
-          event.target.parentElement.dataset.price.split(" ").shift()
-        );
-        setProductNumber(productnumber + 1);
+        setAddList((prevAddList) => {
+          const updatedAddList = [...prevAddList];
+          updatedAddList[BookIndex].Quantity += 1;
+          return updatedAddList;
+        });
+
         setFinalPrice(
           (finalprice) =>
             finalprice +
@@ -41,8 +50,11 @@ function Library() {
         );
         break;
       case "-":
-        console.log(event.target);
-        setProductNumber(productnumber - 1);
+        setAddList((prevAddList) => {
+          const updatedAddList = [...prevAddList];
+          updatedAddList[BookIndex].Quantity -= 1;
+          return updatedAddList;
+        });
         setFinalPrice(
           (finalprice) =>
             finalprice -
@@ -68,6 +80,7 @@ function Library() {
         }
         break;
       default:
+        console.log("HH");
         break;
     }
   };
@@ -165,13 +178,16 @@ function Library() {
                 <li id="cart" key={v4()}>
                   <div>
                     {" "}
-                    <img src={product.img} />
+                    <img src={product.Book.img} />
                   </div>
-                  <div data-price={product.price}>
-                    <h2>{product.title}</h2>
-                    <h4>{product.price}</h4>
+                  <div
+                    data-price={product.Book.price}
+                    data-id={product.Book.isbn}
+                  >
+                    <h2>{product.Book.title}</h2>
+                    <h4>{product.Book.price}</h4>
                     <button onClick={PressingButton}>-</button>
-                    <span>{productnumber}</span>
+                    <span>{product.Quantity}</span>
                     <button onClick={PressingButton}>+</button>
                   </div>
                 </li>
