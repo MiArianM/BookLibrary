@@ -96,7 +96,7 @@ function Library() {
         break;
     }
     setAddList((prevAddList) =>
-      prevAddList.filter((item) => item.Quantity >= 0)
+      prevAddList.filter((item) => item.Quantity >= 1)
     );
   };
 
