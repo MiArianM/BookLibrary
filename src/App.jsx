@@ -5,6 +5,7 @@ import Library from "./Components/Library";
 import OurServices from "./Components/OurServices";
 import "./Styles/Global.css";
 import "./Styles/FadeAnimations.css";
+import "./Styles/Responsive.css";
 function App() {
   return (
     <>

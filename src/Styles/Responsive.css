@@ -1,0 +1,113 @@
+/*Header------*/
+/*NavBar*/
+
+.hamburger-menu span::before {
+  content: "____";
+  display: block;
+  text-decoration: underline;
+  text-decoration-thickness: 2.5px;
+  line-height: 0.5;
+}
+
+#HamburgerMenu {
+  backdrop-filter: blur(10px);
+  position: fixed;
+  z-index: 1;
+  align-items: center;
+  width: 600px;
+  justify-content: space-between;
+  padding: 40px;
+  border-radius: 20px;
+  margin-top: 5rem;
+  line-height: 0.5;
+  gap: 50px;
+  background-color: beige;
+  * {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  img {
+    height: 55px;
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+  }
+  .hamburger-menu {
+    position: relative;
+    margin-left: 90%;
+    margin-top: -3.2rem;
+    cursor: pointer;
+  }
+}
+.hamburger-menu {
+  cursor: pointer;
+  margin-left: 80%;
+}
+@media (max-width: 2000px) {
+  .hmFirst {
+    display: none;
+  }
+}
+@media (max-width: 965px) {
+  .hmFirst {
+    display: block;
+  }
+  .fnav {
+    display: none;
+  }
+}
+/*HomePage IntroDuction*/
+@media (max-width: 1331px) {
+  span.focus {
+    font-size: 2.15rem;
+  }
+  span.focus::before {
+    filter: blur(0px);
+  }
+  .focus::after {
+    display: none;
+  }
+  .focus--mask {
+    display: none;
+  }
+}
+@media (max-width: 1088px) {
+  span.focus {
+    font-size: 1.5rem;
+  }
+  span.focus::before {
+    filter: blur(3px);
+  }
+  .focus::after {
+    display: block;
+  }
+  .focus--mask {
+    display: block;
+  }
+}
+@media (max-width: 983px) {
+  span.focus {
+    text-decoration: underline;
+    text-decoration-thickness: 0.5px;
+  }
+  span.focus::before {
+    filter: blur(0px);
+    content: "Buy & Borrow";
+  }
+  .focus::after {
+    display: none;
+  }
+  .focus--mask {
+    display: none;
+  }
+}
+@media (max-width: 897px) {
+  span.focus::before {
+    font-size: 1.25rem;
+  }
+}
+@media (max-width: 416px) {
+  span.focus::before {
+    font-size: 1rem;
+  }
+}

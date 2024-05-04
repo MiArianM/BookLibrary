@@ -1,10 +1,16 @@
+import { useState } from "react";
 import "../Styles/Header.css";
 /* eslint-disable react/no-unescaped-entities */
 function Header() {
+  // eslint-disable-next-line no-unused-vars
+  const [clicked, setClicked] = useState(false);
+  const openMenu = () => {
+    setClicked((clicked) => !clicked);
+  };
   return (
     <>
       <header>
-        <nav className="animate__animated animate__backInDown">
+        <nav className="fnav animate__animated animate__backInDown">
           <img src="../NavLogo.png" width="100px" />
           <ul>
             <li>
@@ -19,6 +25,43 @@ function Header() {
             <button>Purchase Now</button>
           </ul>
         </nav>
+        <div
+          style={clicked ? { display: "none" } : { display: "block" }}
+          onClick={openMenu}
+          className="hmFirst hamburger-menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div
+          style={clicked ? { display: "block" } : { display: "none" }}
+          id="HamburgerMenu"
+        >
+          <img src="../NavLogo.png" />
+          <ul>
+            <div onClick={openMenu} className="hmSecound hamburger-menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <li>
+              <a href="#">Demos</a>
+            </li>
+            <li>
+              <a href="#">Documentation</a>
+            </li>
+            <li>
+              <a href="#">Support</a>
+            </li>
+            <li>
+              {" "}
+              <a href="#">Support</a>
+            </li>
+            <button>Purchase Now</button>
+          </ul>
+        </div>
+
         <section id="HomeHeader">
           <div
             className="animate__animated animate__flipInX "
