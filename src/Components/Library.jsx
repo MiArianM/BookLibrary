@@ -3,7 +3,12 @@ import "../Styles/Library.css";
 import books from "../Books";
 import { useState } from "react";
 import { v4 } from "uuid";
+import { useMediaQuery } from "react-responsive";
+
 function Library() {
+  const cartresp = useMediaQuery({
+    query: "(max-width: 1260px)",
+  });
   const [searchvalue, setSearchValue] = useState("");
   const [finalBooks, setFinalBooks] = useState([...books]);
   const [favlist, setFavList] = useState([]);
@@ -145,6 +150,58 @@ function Library() {
         <p style={{ fontFamily: "serief", letterSpacing: "2px" }}>
           -Relax ! LowerCase/UpperCase Is not Important Here xD
         </p>
+        {cartresp && (
+          <div
+            className="wow animate__animated animate__fadeInUp"
+            id="cart-favSection"
+          >
+            <div id="Cart-Section">
+              <h3>Your Add Cart</h3>
+              <ol>
+                {addlist.map((product) => (
+                  <li id="cart" key={v4()}>
+                    <div>
+                      {" "}
+                      <img src={product.Book.img} />
+                    </div>
+                    <div
+                      data-price={product.Book.price}
+                      data-id={product.Book.isbn}
+                    >
+                      <h2>{product.Book.title}</h2>
+                      <h4>{product.Book.price}</h4>
+                      <button data-action="-" onClick={PressingButton}>
+                        -
+                      </button>
+                      <span className="animate__animated animate__rotateInDownRight ">
+                        {product.Quantity}
+                      </span>
+                      <button data-action="+" onClick={PressingButton}>
+                        +
+                      </button>
+                      <i
+                        onClick={DeleteItem}
+                        className="fa-solid fa-trash-can"
+                      ></i>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+              <strong>Total Price : {finalprice} $</strong>
+            </div>
+            <div id="Fav-List">
+              <h3>Your Favorite Books</h3>
+              <ol>
+                {favlist.map((favbook) => (
+                  <li key={favbook.isbn}>
+                    <img src={favbook.img} />
+                    <h2>{favbook.title}</h2>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        )}
       </div>
       <div id="libraryAndList">
         <ul>
@@ -186,7 +243,7 @@ function Library() {
                       </a>
                       <a
                         onClick={PressingButton}
-                        href="#Cart-Section"
+                        href="#cart"
                         className="btn btn-light"
                       >
                         Purchase
@@ -207,6 +264,7 @@ function Library() {
           ))}
         </ul>
         <div
+          style={cartresp ?{ display: "none" }:console.log("Hmm")}
           className="wow animate__animated animate__fadeInUp"
           id="cart-favSection"
         >

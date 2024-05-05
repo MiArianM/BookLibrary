@@ -29,6 +29,12 @@
     margin-left: 4.25rem;
     border-radius: 20px;
   }
+  #SearchContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   #Fav-List * {
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
       "Lucida Sans", Arial, sans-serif;
@@ -58,7 +64,7 @@
     list-style-type: none;
   }
   .containero {
-    width: 50%;
+    width: 100%;
     height: fit-content;
   }
 
@@ -147,6 +153,7 @@
   .cta-section {
     display: flex;
     flex-direction: row;
+    margin-top: 2rem;
   }
   .cta-section i {
     font-size: 40px;
@@ -169,7 +176,6 @@
   }
 }
 #cart-favSection {
-  width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
