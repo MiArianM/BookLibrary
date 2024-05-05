@@ -39,12 +39,12 @@ function Header() {
           id="HamburgerMenu"
         >
           <img src="../NavLogo.png" />
+          <div onClick={openMenu} className="hmSecound hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
           <ul>
-            <div onClick={openMenu} className="hmSecound hamburger-menu">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
             <li>
               <a href="#">Demos</a>
             </li>
@@ -54,10 +54,7 @@ function Header() {
             <li>
               <a href="#">Support</a>
             </li>
-            <li>
-              {" "}
-              <a href="#">Support</a>
-            </li>
+
             <button>Purchase Now</button>
           </ul>
         </div>

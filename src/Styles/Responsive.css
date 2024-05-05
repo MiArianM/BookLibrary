@@ -11,10 +11,11 @@
   z-index: 1;
   align-items: center;
   width: 1000px;
-  height: 100vh;
+  height: 104vh;
   justify-content: space-between;
   line-height: 0.7;
   background-color: rgb(220, 245, 238);
+
   * {
     font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
   }
@@ -78,10 +79,11 @@
   }
   .hamburger-menu {
     animation: SecoundMenu 1s forwards;
-    position: relative;
+    position: absolute;
     margin-left: 90%;
     margin-top: -4.5rem;
     cursor: pointer;
+    overflow-y: visible;
   }
 }
 .hamburger-menu {
@@ -147,14 +149,20 @@
     }
   }
 }
-@media (max-width: 766px) {
+@media (max-width: 719px) {
   #HamburgerMenu {
-    .hamburger-menu {
-      margin-left: 25%;
+    img {
+      margin-left: 14%;
     }
+    ul {
+      margin-top: 50px;
+    }
+  }
+}
+@media (max-width: 637px) {
+  #HamburgerMenu {
     img {
       margin-left: 30%;
-      top: -27px;
     }
   }
 }
@@ -165,11 +173,29 @@
     }
   }
 }
+@media (max-width: 527px) {
+  #HamburgerMenu {
+    ul li {
+      width: 200px;
+    }
+    .hamburger-menu {
+      margin-left: 60%;
+    }
+  }
+}
 @media (max-width: 465px) {
   #HamburgerMenu {
-    height: 125vh;
-    li {
-      width: 300px;
+    .hamburger-menu {
+      margin-left: 50%;
+    }
+    ul li {
+      width: 150px;
+      margin-right: 10%;
+    }
+    button{
+      width: 160px;
+      margin-right: 10%;
+
     }
   }
 }
