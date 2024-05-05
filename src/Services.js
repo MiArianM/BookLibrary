@@ -6,6 +6,7 @@ const services = [
     img: "../../public/Pics/Service1.jpg",
     leftWork: "More Information",
     rightWork: "View The Books",
+    href:"Library"
   },
   {
     title: "Set a Yearly Reading Goal",
@@ -14,6 +15,8 @@ const services = [
     img: "../../public/Pics/Service2.jpg",
     leftWork: "More Information",
     rightWork: "Set The Goal",
+    href:"Calender"
+
   },
   {
     title: "Keep Track of your Favorite Books",
@@ -21,6 +24,8 @@ const services = [
     img: "../../public/Pics/Service3.jpg",
     leftWork: "More Information",
     rightWork: "Favorite List",
+    href:"Fav-List"
+
   },
 
 ];
