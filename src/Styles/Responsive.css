@@ -199,7 +199,6 @@
     }
   }
 }
-
 /*HomePage IntroDuction*/
 @media (max-width: 1347px) {
   span.focus {
@@ -419,7 +418,6 @@
   }
 }
 /*LibraryBook*/
-
 @media (max-width: 865px) {
   #Library {
     #cart-favSection {

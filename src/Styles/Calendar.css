@@ -1,21 +1,83 @@
 #Calender * {
-  text-align: center;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
-#Calender span {
-  font-weight: 600;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+#Calender {
+  height: fit-content;
 }
-#Calender button {
-  padding: 10px;
-  background-color: rgb(244, 250, 225);
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  margin: 20px;
-  border: 1px red solid;
-  border-radius: 20px;
+.css-gqp4xl-MuiPickersLayout-root {
+  grid-auto-columns: auto !important;
+}
+.svg-inline--fa {
+  font-size: 45px;
+  color: rgb(182, 151, 15);
   cursor: pointer;
-  text-align: center;
-  margin-left: 45%;
-  font-size: 20px;
+}
+.svg-inline--fa:hover {
+  animation: rotator 5s linear infinite;
+}
+.css-obyytu h3 {
+  margin-left: 20px;
+}
+@keyframes rotator {
+  0% {
+    transform: rotate(0deg) translate(0px, 0px);
+    filter: contrast(1);
+  }
+  25% {
+    transform: rotate(45deg) translateX(10px);
+  }
+  50% {
+    transform: rotate(90deg) translate(10px, 10px);
+  }
+  75% {
+    transform: rotate(180deg) translate(0px, 10px);
+  }
+  100% {
+    transform: rotate(360deg) translate(0px, 0px) scale(1.25);
+    filter: contrast(4);
+  }
+}
+.css-16b5y55-MuiPickersLayout-contentWrapper {
+  grid-column: 1 !important;
+}
+.css-1rtg91x-MuiDateCalendar-root {
+  width: 700px !important;
+  height: 498px !important;
+  max-height: 498px !important;
+}
+
+.css-i5q14k-MuiDayCalendar-header * {
+  font-size: 29px !important;
+  padding: 10px 35.25px !important;
+}
+.css-14iq4xa-MuiDayCalendar-root {
+  height: 498px !important;
+  max-height: 498px !important;
+}
+.css-1t0788u-MuiPickersSlideTransition-root-MuiDayCalendar-slideTransition * {
+  font-size: 28px !important;
+  padding: 0px 35px !important;
+  font-weight: 500 !important;
+  min-height: 30px !important;
+  margin: 10px;
+}
+.css-1hbyad5-MuiTypography-root {
+  display: none;
+}
+.css-h4y409-MuiList-root * {
+  width: fit-content !important;
+}
+.css-1nxmd3h-MuiListItem-root {
+  background-color: rgb(245, 240, 234);
+  margin: 10px;
+  padding: 10px;
+  border-radius: 30px;
+  .css-10hburv-MuiTypography-root {
+    font-size: 20px !important;
+  }
+  .css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root{
+    border-radius: 50px;
+    background-color: rgb(214, 221, 209);
+  }
 }
