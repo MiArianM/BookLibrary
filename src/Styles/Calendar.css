@@ -69,15 +69,43 @@
   width: fit-content !important;
 }
 .css-1nxmd3h-MuiListItem-root {
-  background-color: rgb(245, 240, 234);
   margin: 10px;
   padding: 10px;
   border-radius: 30px;
   .css-10hburv-MuiTypography-root {
-    font-size: 20px !important;
+    font-size: 13px !important;
+    font-weight: 600;
   }
-  .css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root{
-    border-radius: 50px;
-    background-color: rgb(214, 221, 209);
+  .css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root {
+    border-radius: 20px;
+    background-color: rgba(154, 216, 216, 0);
+    padding: 0px 20px;
+    border-bottom: 2px rgba(137, 43, 226, 0) solid;
+    transition: all 0.5s;
+    width: 83px !important;
   }
+  .css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root:hover {
+    background-color: rgb(154, 216, 216);
+    border-bottom: 2px blueviolet solid;
+  }
+}
+.css-dplwbx-MuiPickersCalendarHeader-label {
+  font-size: 17px;
+}
+
+.css-31ca4x-MuiPickersFadeTransitionGroup-root {
+  padding: 10px;
+  height: 50px;
+  -webkit-box-shadow: 5px 5px 15px 5px #00000000;
+  box-shadow: 1px 1px 1px 1px #00000000;
+  transition: 0.7s all;
+}
+.css-31ca4x-MuiPickersFadeTransitionGroup-root:hover {
+  -webkit-box-shadow: 5px 5px 15px 5px #000000;
+  box-shadow: 2px 1px 1px 1px #000000;
+  border-radius: 15px;
+}
+.css-16b5y55-MuiPickersLayout-contentWrapper * {
+  scrollbar-color: #6969dd #e0e0e0;
+  overflow-y: hidden;
 }
