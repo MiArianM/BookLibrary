@@ -18,23 +18,35 @@ function ToReadList({ bookdata }) {
           <div id="imgo">
             <img
               src={`https://covers.openlibrary.org/b/isbn/${book.imgisbn}-L.jpg`}
-            />
+            />{" "}
+            <div id="InfoData">
+              <h2>{book.Name}</h2>
+              <address>By {book.Author}</address>
+              <p>{book.intro}</p>
+              <span>
+                Language : {book.language.join(",")} <br />
+              </span>
+              <span style={{ borderBottom: "none" }}>Pages : {book.Pages}</span>
+            </div>
           </div>
-          <div id="InfoData">
-            <h2>{book.Name}</h2>
-            <address>By {book.Author}</address>
-            <p>{book.intro}</p>
-          </div>
+
           <div id="someOtherInfos">
-            <div>
+            <div className="Boxo">
               <h3>
-                Published{" "}
-                {book.publish.PublishYear[book.publish.PublishYear.length - 1]}{" "}
-                At {book.publish.PublishPlace.join(",")}
+                <fieldset>
+                  <legend>Published</legend>
+                  in :{" "}
+                  {
+                    book.publish.PublishYear[
+                      book.publish.PublishYear.length - 1
+                    ]
+                  }{" "}
+                  <br />
+                  At : {book.publish.PublishPlace.join(",")}
+                  <br />
+                  BY : {book.publish.Publishers.join(",")}
+                </fieldset>
               </h3>
-              By :<h5>{book.publish.Publishers.join(",")}</h5>
-              Language : {book.language} <br />
-              Pages : {book.Pages}
             </div>
           </div>
         </li>
