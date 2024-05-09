@@ -1,0 +1,58 @@
+#BooksList {
+  img {
+    width: 170px;
+    border-radius: 50px;
+    border: 1px solid slategrey;
+  }
+  li {
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    gap: 250px;
+    border-radius: 10px;
+    padding: 20px;
+    transition: 0.5s all;
+  }
+  li > div#imgo {
+    border-bottom: 1px solid gray;
+    border-left: 1px solid rgba(128, 128, 128, 0.24);
+    border-right: 1px solid rgba(128, 128, 128, 0);
+    border-top: 1px solid rgba(128, 128, 128, 0);
+    border-radius: 30px;
+    padding: 20px;
+    transition: 0.5s all;
+    cursor: pointer;
+  }
+
+  li > div#imgo:hover {
+    border-right: 1px solid gray;
+    border-top: 1px solid rgba(128, 128, 128, 0.24);
+  }
+  li:hover {
+    -webkit-box-shadow: inset 8px -6px 24px -5px rgba(0, 0, 0, 0.54);
+    box-shadow: inset 8px -6px 24px -5px rgba(0, 0, 0, 0.54);
+  }
+  #InfoData {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    h2 {
+      color: #202c2d;
+      background: #ffffff;
+      letter-spacing: 0.3em;
+      text-shadow: 0 1px #808d93, -1px 0 #cdd2d5, -1px 2px #808d93,
+        -2px 1px #cdd2d5, -2px 3px #808d93, -3px 2px #cdd2d5, -3px 4px #808d93,
+        -4px 3px #cdd2d5, -4px 5px #808d93, -5px 4px #cdd2d5, -5px 6px #808d93,
+        -6px 5px #cdd2d5, -6px 7px #808d93, -7px 6px #cdd2d5, -7px 8px #808d93,
+        -8px 7px #cdd2d5;
+      font-size: 40px;
+    }
+    address {
+      margin: 30px;
+      font-size: 40px;
+    }
+    #someOtherInfos{
+        display: flex;
+    }
+  }
+}

@@ -5,19 +5,22 @@
 #Calender {
   height: fit-content;
 }
-.css-gqp4xl-MuiPickersLayout-root {
-  grid-auto-columns: auto !important;
-}
+
 .svg-inline--fa {
-  font-size: 45px;
+  font-size: 28px;
   color: rgb(182, 151, 15);
   cursor: pointer;
 }
 .svg-inline--fa:hover {
   animation: rotator 5s linear infinite;
 }
-.css-obyytu h3 {
+.css-obyytu input {
   margin-left: 20px;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+.css-obyytu input::placeholder {
+  font-size: 10px;
 }
 @keyframes rotator {
   0% {
@@ -108,4 +111,7 @@
 .css-16b5y55-MuiPickersLayout-contentWrapper * {
   scrollbar-color: #6969dd #e0e0e0;
   overflow-y: hidden;
+}
+.css-gqp4xl-MuiPickersLayout-root .MuiPickersLayout-toolbar {
+  grid-row: auto !important;
 }
