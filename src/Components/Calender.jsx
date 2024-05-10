@@ -13,12 +13,15 @@ import { StaticDatePicker } from "@mui/x-date-pickers/StaticDatePicker";
 import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import { useMediaQuery } from "react-responsive";
 import Modal from "@mui/material/Modal";
-import TextField from "@mui/material/TextField";
-import { StaticTimePicker } from "@mui/x-date-pickers/StaticTimePicker";
+import dayjs from "dayjs";
+import { TimeClock } from "@mui/x-date-pickers/TimeClock";
 import "../Styles/Calendar.css";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ToReadList from "./ToReadList";
-function ActionList(props) {
+import { Typography } from "@mui/material";
+
+// eslint-disable-next-line no-unused-vars
+const ActionList = React.forwardRef((props, ref) => {
   const style = {
     position: "absolute",
     top: "50%",
@@ -30,13 +33,32 @@ function ActionList(props) {
     boxShadow: 24,
     p: 4,
   };
+  const [selectedtime, setSelectedTime] = useState([]);
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(new Date());
+  const [valueTime, setValueTime] = useState(dayjs("2024-5-10T15:30"));
   const handleClose = () => setOpen(false);
   // eslint-disable-next-line react/prop-types
   const onAccept = () => {
     setOpen(true);
-    console.log(datevalue.toISOString().split("T").shift());
+    setSelectedTime((time) => [
+      ...time,
+      { Date: datevalue.toISOString().split("T").shift() },
+    ]);
+  };
+  const okButton = () => {
+    setOpen(false);
+    const updatedSelectedTime = selectedtime.map((item) => {
+      return {
+        ...item,
+        SecondKey: valueTime.$d.toString().split(" ").splice(4, 1).toString(),
+      };
+    });
+    // Update the state with the modified selectedtime array
+    setSelectedTime(updatedSelectedTime);
+    console.log(updatedSelectedTime);
+  };
+  const cancelButton = () => {
+    setOpen(false);
   };
   const { datevalue, onClear, onCancel, onSetToday } = props;
   const actions = [
@@ -63,24 +85,24 @@ function ActionList(props) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        {open && (
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Text in a modal
+          </Typography>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <Box sx={style}>
-              <StaticTimePicker
-                displayStaticWrapperAs="mobile"
-                value={value}
-                onChange={(newValue) => {
-                  setValue(newValue);
-                }}
-                renderInput={(params) => <TextField {...params} />}
-              />
-            </Box>
+            <TimeClock
+              value={valueTime}
+              onChange={(newValue) => setValueTime(newValue)}
+            />
           </LocalizationProvider>
-        )}
+          <button onClick={okButton}>Ok</button>
+          <button onClick={cancelButton}>Cancel</button>
+        </Box>
       </Modal>
     </>
   );
-}
+});
+ActionList.displayName = "ActionList";
 function BookHeader({ onBookChase }) {
   const [inputvalue, setInputValue] = useState("");
   const handleBookChasing = () => {
