@@ -12,12 +12,33 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { StaticDatePicker } from "@mui/x-date-pickers/StaticDatePicker";
 import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import { useMediaQuery } from "react-responsive";
+import Modal from "@mui/material/Modal";
+import TextField from "@mui/material/TextField";
+import { StaticTimePicker } from "@mui/x-date-pickers/StaticTimePicker";
 import "../Styles/Calendar.css";
 import { useEffect, useState } from "react";
 import ToReadList from "./ToReadList";
 function ActionList(props) {
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+  };
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(new Date());
+  const handleClose = () => setOpen(false);
   // eslint-disable-next-line react/prop-types
-  const { onAccept, onClear, onCancel, onSetToday } = props;
+  const onAccept = () => {
+    setOpen(true);
+    console.log(datevalue.toISOString().split("T").shift());
+  };
+  const { datevalue, onClear, onCancel, onSetToday } = props;
   const actions = [
     { text: "Accept", method: onAccept },
     { text: "Clear", method: onClear },
@@ -26,15 +47,38 @@ function ActionList(props) {
   ];
 
   return (
-    <List>
-      {actions.map(({ text, method }) => (
-        <ListItem key={text} disablePadding>
-          <ListItemButton onClick={method}>
-            <ListItemText primary={text} />
-          </ListItemButton>
-        </ListItem>
-      ))}
-    </List>
+    <>
+      <List>
+        {actions.map(({ text, method }) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton onClick={method}>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        {open && (
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <Box sx={style}>
+              <StaticTimePicker
+                displayStaticWrapperAs="mobile"
+                value={value}
+                onChange={(newValue) => {
+                  setValue(newValue);
+                }}
+                renderInput={(params) => <TextField {...params} />}
+              />
+            </Box>
+          </LocalizationProvider>
+        )}
+      </Modal>
+    </>
   );
 }
 function BookHeader({ onBookChase }) {
@@ -66,6 +110,8 @@ function BookHeader({ onBookChase }) {
   );
 }
 function Calender({ children }) {
+  const [datevalue, setDateValue] = useState(null);
+  const renderActionList = () => <ActionList datevalue={datevalue} />;
   const MobileQu = useMediaQuery({
     query: "(max-width: 500px)",
   });
@@ -73,14 +119,16 @@ function Calender({ children }) {
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <section id="Calender">
         <hr />
-        {children}
+        <>{children}</>
         {MobileQu ? (
           <MobileDatePicker />
         ) : (
           <StaticDatePicker
             slots={{
-              actionBar: ActionList,
+              actionBar: renderActionList, // Pass datevalue as a prop
             }}
+            value={datevalue}
+            onChange={(newDate) => setDateValue(newDate)}
           />
         )}
       </section>
@@ -116,9 +164,10 @@ function App() {
         isbn: json.docs[json.docs.length - 1]._version_,
         language: json.docs[json.docs.length - 1].language,
         Pages: json.docs[json.docs.length - 1].number_of_pages_median,
-        imgisbn: json.docs[json.docs.length - 1].isbn[
-          json.docs[json.docs.length - 1].isbn.length - 2
-        ],
+        imgisbn:
+          json.docs[json.docs.length - 1].isbn[
+            json.docs[json.docs.length - 1].isbn.length - 2
+          ],
       };
       setDataBook(Book);
     } catch (error) {
