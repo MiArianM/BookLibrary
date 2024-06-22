@@ -42,9 +42,14 @@ function ToReadList({ bookdata }) {
                     ]
                   }{" "}
                   <br />
-                  At : {book.publish.PublishPlace.join(",")}
-                  <br />
-                  BY : {book.publish.Publishers.join(",")}
+                  {book.publish.PublishPlace && (
+                    <>
+                      {" "}
+                      At : {book.publish.PublishPlace.join(",")}
+                      <br />
+                      BY : {book.publish.Publishers.join(",")}
+                    </>
+                  )}
                 </fieldset>
               </h3>
             </div>

@@ -1,27 +1,29 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import Box from "@mui/material/Box";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook } from "@fortawesome/free-solid-svg-icons";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { StaticDatePicker } from "@mui/x-date-pickers/StaticDatePicker";
 import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import { useMediaQuery } from "react-responsive";
+import { TimeClock } from "@mui/x-date-pickers/TimeClock";
+import { Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
 import Modal from "@mui/material/Modal";
 import dayjs from "dayjs";
-import { TimeClock } from "@mui/x-date-pickers/TimeClock";
 import "../Styles/Calendar.css";
-import React, { useEffect, useState } from "react";
 import ToReadList from "./ToReadList";
-import { Typography } from "@mui/material";
+import Button from "@mui/material/Button";
+import { useSnackbar } from "notistack";
 
 // eslint-disable-next-line no-unused-vars
-const ActionList = React.forwardRef((props, ref) => {
+const ActionList = React.forwardRef((props) => {
   const style = {
     position: "absolute",
     top: "50%",
@@ -40,22 +42,27 @@ const ActionList = React.forwardRef((props, ref) => {
   // eslint-disable-next-line react/prop-types
   const onAccept = () => {
     setOpen(true);
-    setSelectedTime((time) => [
-      ...time,
-      { Date: datevalue.toISOString().split("T").shift() },
-    ]);
+    const newSelectedTime = {
+      Date: datevalue.toISOString().split("T").shift(),
+    };
+    setSelectedTime([...selectedtime, newSelectedTime]);
   };
   const okButton = () => {
-    setOpen(false);
-    const updatedSelectedTime = selectedtime.map((item) => {
-      return {
-        ...item,
-        SecondKey: valueTime.$d.toString().split(" ").splice(4, 1).toString(),
-      };
-    });
-    // Update the state with the modified selectedtime array
-    setSelectedTime(updatedSelectedTime);
-    console.log(updatedSelectedTime);
+    if (selectedtime.length > 0) {
+      setOpen(false);
+
+      // Get the last object from selectedTime array
+      const lastSelectedTime = selectedtime[selectedtime.length - 1];
+      // Update the last object with the Time key
+      lastSelectedTime.Time = valueTime.$d
+        .toString()
+        .split(" ")
+        .splice(4, 1)
+        .toString();
+      // Update selectedTime array
+      setSelectedTime([...selectedtime.slice(0, -1), lastSelectedTime]);
+      console.log(selectedtime);
+    }
   };
   const cancelButton = () => {
     setOpen(false);
@@ -132,6 +139,16 @@ function BookHeader({ onBookChase }) {
   );
 }
 function Calender({ children }) {
+  const { enqueueSnackbar } = useSnackbar();
+
+  const handleClick = () => {
+    enqueueSnackbar("I love snacks.");
+  };
+
+  const handleClickVariant = (variant) => () => {
+    // variant could be success, error, warning, info, or default
+    enqueueSnackbar("This is a success message!", { variant });
+  };
   const [datevalue, setDateValue] = useState(null);
   const renderActionList = () => <ActionList datevalue={datevalue} />;
   const MobileQu = useMediaQuery({
@@ -145,13 +162,21 @@ function Calender({ children }) {
         {MobileQu ? (
           <MobileDatePicker />
         ) : (
-          <StaticDatePicker
-            slots={{
-              actionBar: renderActionList, // Pass datevalue as a prop
-            }}
-            value={datevalue}
-            onChange={(newDate) => setDateValue(newDate)}
-          />
+          <>
+            <StaticDatePicker
+              slots={{
+                actionBar: renderActionList, // Pass datevalue as a prop
+              }}
+              value={datevalue}
+              onChange={(newDate) => setDateValue(newDate)}
+            />
+            <React.Fragment>
+              <Button onClick={handleClick}>Show snackbar</Button>
+              <Button onClick={handleClickVariant("success")}>
+                Show success snackbar
+              </Button>
+            </React.Fragment>
+          </>
         )}
       </section>
     </LocalizationProvider>
@@ -166,6 +191,7 @@ function App() {
   const getting = async () => {
     try {
       const bookname = book.split(" ").join("+");
+      console.log(bookname);
       const res = await fetch(
         `https://openlibrary.org/search.json?q=${bookname}`
       );
